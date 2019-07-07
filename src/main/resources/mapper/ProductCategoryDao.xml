@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.dao.ProductCategoryDao">
+    <resultMap id="productCategoryMap" type="com.java.entity.ProductCategory">
+        <id column="product_category_id" property="productCategoryId"/>
+        <result column="product_category_name" property="productCategoryName"/>
+        <result column="priority" property="priority"/>
+        <result column="create_time" property="createTime"/>
+        <association column="shop_id" property="shop" javaType="com.java.entity.Shop">
+            <id column="shop_id" property="shopId"/>
+        </association>
+    </resultMap>
+
+    <select id="selectProductCategoryList" resultMap="productCategoryMap" parameterType="Long">
+      SELECT
+      p.product_category_id,
+      p.product_category_name,
+      p.priority,
+      p.create_time,
+      s.shop_id
+      FROM
+      tb_product_category p,
+      tb_shop s
+      WHERE
+      p.shop_id = s.shop_id
+      AND
+      s.shop_id = #{shopId}
+      ORDER BY p.priority DESC
+    </select>
+
+    <insert id="batchInsertProductCategory" parameterType="List">
+        INSERT INTO
+        tb_product_category(
+        product_category_name,
+        priority,
+        create_time,
+        shop_id
+        )
+        VALUES
+        <foreach collection="list" item="productCategory" separator=",">
+            (
+            #{productCategory.productCategoryName},
+            #{productCategory.priority},
+            #{productCategory.createTime},
+            #{productCategory.shop.shopId}
+            )
+        </foreach>
+    </insert>
+
+    <delete id="deleteProductCategory">
+        DELETE FROM
+        tb_product_category
+        WHERE
+        product_category_id = #{productCategoryId}
+        AND
+        shop_id = #{shopId}
+    </delete>
+
+    <update id="updateProductCategoryToNull" parameterType="Long">
+        UPDATE
+        tb_product_category
+        SET
+        product_category_id = NULL
+        WHERE
+        product_category_id = #{productCategoryId}
+    </update>
+</mapper>

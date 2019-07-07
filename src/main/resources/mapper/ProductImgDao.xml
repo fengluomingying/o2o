@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.dao.ProductImgDao">
+    <resultMap id="productImgMap" type="com.java.entity.ProductImg">
+        <id column="product_img_id" property="productImgId"/>
+        <result column="img_addr" property="imgAddr"/>
+        <result column="img_desc" property="imgDesc"/>
+        <result column="img_priority" property="priority"/>
+        <result column="img_create_time" property="createTime"/>
+        <association column="product_id" property="product" javaType="com.java.entity.Product">
+            <id column="product_id" property="productId"/>
+        </association>
+    </resultMap>
+
+    <insert id="batchInsertProductImg" parameterType="List">
+        INSERT INTO
+        tb_product_img(
+          img_addr,
+          img_desc,
+          img_priority,
+          img_create_time,
+          product_id
+        )
+        VALUES
+        <foreach collection="list" item="productImg" index="index" separator=",">
+            (
+              #{productImg.imgAddr},
+              #{productImg.imgDesc},
+              #{productImg.priority},
+              #{productImg.createTime},
+              #{productImg.product.productId}
+            )
+        </foreach>
+    </insert>
+
+    <delete id="deleteProductImgByProductId" parameterType="Long">
+        DELETE FROM
+        tb_product_img
+        WHERE
+        product_id = #{productId}
+    </delete>
+
+    <select id="selectProductImgList"  resultMap="productImgMap" parameterType="Long">
+        SELECT
+        product_img_id,
+        img_addr,
+        img_desc,
+        img_priority,
+        img_create_time,
+        product_id
+        FROM tb_product_img
+        WHERE product_id = #{productId}
+        ORDER BY
+        product_img_id ASC
+    </select>
+</mapper>

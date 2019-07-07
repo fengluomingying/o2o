@@ -1,0 +1,18 @@
+2018-09-01 15:15:45 947[main] DEBUG com.java.dao.ShopDao.selectShopList - ==>  Preparing: SELECT s.shop_id, s.shop_img, s.shop_name, s.shop_desc, s.shop_phone, s.shop_addr, s.enable_status, s.advice, s.priority, a.area_id, a.area_name, sc.shop_category_id, sc.shop_category_name FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id=sc.shop_category_id ORDER BY s.priority DESC LIMIT ?,? 
+2018-09-01 15:15:46 011[main] DEBUG com.java.dao.ShopDao.selectShopList - ==> Parameters: 1(Long), 0(Integer), 2(Integer)
+2018-09-01 15:15:46 036[main] DEBUG com.java.dao.ShopDao.selectShopList - <==      Total: 2
+2018-09-01 15:15:46 044[main] DEBUG com.java.dao.ShopDao.selectCountOfShop - ==>  Preparing: SELECT count(1) FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id=sc.shop_category_id 
+2018-09-01 15:15:46 045[main] DEBUG com.java.dao.ShopDao.selectCountOfShop - ==> Parameters: 1(Long)
+2018-09-01 15:15:46 046[main] DEBUG com.java.dao.ShopDao.selectCountOfShop - <==      Total: 1
+2018-09-01 15:16:36 792[main] DEBUG com.java.dao.ShopDao.selectShopList - ==>  Preparing: SELECT s.shop_id, s.shop_img, s.shop_name, s.shop_desc, s.shop_phone, s.shop_addr, s.enable_status, s.advice, s.priority, a.area_id, a.area_name, sc.shop_category_id, sc.shop_category_name FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id=sc.shop_category_id ORDER BY s.priority DESC LIMIT ?,? 
+2018-09-01 15:16:36 829[main] DEBUG com.java.dao.ShopDao.selectShopList - ==> Parameters: 1(Long), 2(Integer), 2(Integer)
+2018-09-01 15:16:36 852[main] DEBUG com.java.dao.ShopDao.selectShopList - <==      Total: 2
+2018-09-01 15:16:36 858[main] DEBUG com.java.dao.ShopDao.selectCountOfShop - ==>  Preparing: SELECT count(1) FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id=sc.shop_category_id 
+2018-09-01 15:16:36 859[main] DEBUG com.java.dao.ShopDao.selectCountOfShop - ==> Parameters: 1(Long)
+2018-09-01 15:16:36 860[main] DEBUG com.java.dao.ShopDao.selectCountOfShop - <==      Total: 1
+2018-09-01 16:09:47 119[main] DEBUG com.java.dao.ShopDao.selectShopList - ==>  Preparing: SELECT s.shop_id, s.shop_img, s.shop_name, s.shop_desc, s.shop_phone, s.shop_addr, s.enable_status, s.advice, s.priority, a.area_id, a.area_name, sc.shop_category_id, sc.shop_category_name FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id=sc.shop_category_id ORDER BY s.priority DESC LIMIT ?,? 
+2018-09-01 16:09:47 154[main] DEBUG com.java.dao.ShopDao.selectShopList - ==> Parameters: 1(Long), 2(Integer), 2(Integer)
+2018-09-01 16:09:47 177[main] DEBUG com.java.dao.ShopDao.selectShopList - <==      Total: 2
+2018-09-01 16:09:47 184[main] DEBUG com.java.dao.ShopDao.selectCountOfShop - ==>  Preparing: SELECT count(1) FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id=sc.shop_category_id 
+2018-09-01 16:09:47 184[main] DEBUG com.java.dao.ShopDao.selectCountOfShop - ==> Parameters: 1(Long)
+2018-09-01 16:09:47 185[main] DEBUG com.java.dao.ShopDao.selectCountOfShop - <==      Total: 1
